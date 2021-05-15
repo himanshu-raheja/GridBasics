@@ -1,0 +1,57 @@
+/*
+******************************** Grid-line property ****************************************************
+    ## you can name your grid line/track size with same name and can use that name later on.
+    
+    Example: grid-template-columns: [left-edge] 1fr 1fr [midpoint] 1fr 1fr[right-edge]
+    you can use that properties later on with the position of elements of the grid.
+    header { 
+    grid-column: left-edge / right-edge;   ***Here left-edge represents 1 and right-edge represents 5***
+    }
+    Same can be used with row as well 
+    
+    We can use repeat function as well with the names of the grid lines
+    
+    Example:
+    grid-template-columns: [left-edge] repeat(auto-fill, [block-start]1fr 2fr[block-end]) [right-end]
+    
+    This will make multiple tracks/ grid lines with the same name. but thats okay with the grid.
+    
+    header { 
+    grid-column: block-start / block-end;   ***It will always takes first block start and first block end***
+    }
+    
+    But what if we want it to stretch a bit
+    header { 
+    grid-column: block-start 2 / block-end 5;   ***Now it will start from 2nd block-start as its end with 5th block end ***
+    }
+
+
+********************************************************************************************************
+
+
+**************************** difference b/w auto-fill & auto-fit ******************************************************************
+    auto-fill FILLS the row with as many columns as it can fit. So it creates implicit columns whenever a new column can fit,
+    because it’s trying to FILL the row with as many columns as it can. The newly added columns can and may be empty, 
+    but they will still occupy a designated space in the row.
+
+
+    auto-fit FITS the CURRENTLY AVAILABLE columns into the space by expanding them so that they take up any available space. 
+    The browser does that after FILLING that extra space with extra columns (as with auto-fill ) and then collapsing the empty ones.
+*************************************************************************************************************************************
+*/
+
+gridContainer {
+    display: grid;
+    grid-template: [header-start] 2em 5em[header-end body-start] 10em 10em[body-end] / [left-edge] 1fr 1fr [mid-point] 1fr 1fr[right-edge];
+}
+header, nav, main, aside {
+    background-color: yellow;
+    border: 1px solid black;
+}
+header {
+    grid-row: header-start / header-end; 
+    grid-column: left-edge / right-edge;
+}
+nav,main {
+    grid-row: body-start / body-end;
+}
