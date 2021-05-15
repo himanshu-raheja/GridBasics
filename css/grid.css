@@ -1,0 +1,47 @@
+html, gridContainer {
+    height: 100%;
+}
+gridContainer {
+    display: grid;
+    /* grid-auto-flow: column; */
+    background-color: lightblue;
+    grid-template: min-content auto min-content / 15em auto 15em;
+    /* writing-mode: vertical-lr; used for langugaes that does not start from left, adverse effect your rows can be columns and vice versa*/
+}
+
+header, footer {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+header, footer, main, nav, div, aside {
+    /* writing-mode: horizontal-tb;  used for langugaes that does not start from left, horizontal-tb: horizontal top to bottom  */
+}
+
+/*
+auto will fill up the remaining space left. 
+min-content property will take up the width of the largest word in the element and give them that much width, words are into the new lines as per the size of the largest word
+max-content will fit content to 1 line
+minmax function specifies min and max of the track
+fit-content track size to the content but don't go above specified value
+
+Shorthand syntax: 
+repeat(2, 1fr) - make the 2 columns as 1 fr each
+repeat(6, 1fr, 2fr) - make the 12 columns where first column is 1fr and second is 2fr then 3rd is 1fr, 4th is 2fr and so on
+repeat(auto-fill, 1fr) - make all the columns as static size 1fr, also responsive
+
+**
+    auto-fill & auto-fit are 2 properties for repeat, in auto-fill it does not takes up all the space and making the 
+    space blank
+    On the other hand auto-fit works same way as auto-fill it just takes up the entire available space**
+
+    grid-template: rows sizing / columns sizing 
+T   his is shorthanf of grid-template-rows & grid-template columns
+**
+
+**
+    By default grid will flow from upper left cell and moved on to left in next line, but htere is one more property grid-flow that can be used to change the flow.
+**
+grid-auto-flow: column //By default row
+
+
+*/

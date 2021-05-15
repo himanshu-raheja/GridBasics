@@ -1,0 +1,66 @@
+/* 
+This is the example of implicit grid, If you define lesser number of rows and lesser number of columns then your
+grid will be using its implicit rules for the remaining item.
+Here we will be defining first 2*2 grid and see the behaviour as there are 9 items then we go for implicit grid styling.
+*/
+
+/*
+*** Define 2*2 grid ***
+Implicit grid means any columns or rows that are to be created by grid itself to accomodate the items
+Here you will see grid of 2*2 which we define is working correctly but other five items are automatically/implicitly
+defined in the grid
+********************* Define a grid *****************************
+
+*/
+ImlicitGridContainer {
+    display: grid;
+    grid: 10em 10em / 10em 10em;
+}
+
+div{
+    background: yellow;
+    border: 1px solid gray;
+}
+
+/* 
+*** grid-auto-rows is the property to size the rows of the implicit grid ***
+*** grid-auto-columns is the property to size the columns of the implicit grid ***
+************Implicit grid with auto rows*******************
+
+*/
+ImlicitGridContainer {
+grid-auto-rows: 5em; /* Create row size of the implicit items to be 5em; */
+}
+
+/* 
+**Suppose you want every row to be 20em whether its implicit or explicit**
+*/
+ImlicitGridContainer {
+   
+    /* grid: 20em 20em / 10em 10em;
+   grid-auto-rows: 20em; Create row size of the implicit items to be 5em; 
+   ****************There is a short hand property for that**************
+   And for columns define after slash part.
+   */
+    grid: auto-flow 20em / 10em 10em;
+
+}
+    
+/* Lets define some gaps b/w the columns and rows 
+
+************grid-column-gap for column gap anf grid-row-gap for row gap and for both we can use grid-gap as shorthand property***************
+
+*/
+
+ImlicitGridContainer {
+   /* grid-column-gap: 1em;
+   grid-row-gap: 2em;; 
+   ********* Shorthand for this ----> **********
+   */
+   grid-gap: 2em 1em;
+
+}
+
+
+
+

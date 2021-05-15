@@ -1,0 +1,78 @@
+/*
+*********************** You can only align a item if its inside the container and have extra space ******************************
+********* justify-content works on the grid container and align it horizontally ************************************************
+********* align-content works on the grid container and align it vertically ************************************************
+1.  start, end , center are some properties that works as name suggested with the above 2. by default start is selected.
+2. space-around, space-evenly, apace-between some other properties can be used with the above 2. These 3 only differs with outside space.
+   ** space-around:  puts half of the space outside as of the tracks
+   ** space-evenly: will put same space on the outside as well as inside 
+   ** apace-between: will not leave any space against the edges
+
+
+******************** justify-items, align-items works with the container for to position the items inside it, 
+******************** This will change the position of content of each grid cell *************************************************
+1. stretch(sefault), start, end, center are some of its properties used
+This property affects every cell in the grid.
+start, end, center will take only the necessary space required to fill up the content
+
+*******************************Justify-self, align-self work on indvidual grid item its properties are same as above one ********************************
+
+
+
+
+******************By default grids are in order and work as expected with the container for the accessibility ******************************
+* If you positioned an item then it will be out of flow and your order will not be right.
+
+
+########################## Tip: Avoid code that moves items out of the flow ##########################################
+
+*********************** dense property added to grid-auto-flow property which will flow items to empty cells in the grid area, 
+This can also break the visual order and source ********************************************************************************************
+
+
+*********************** There is one more property named as order can be applied to items by default every item has order 0 ***********************************
+If you want to position something at the end of the grid, mark the order as 1 and if any other element after that then mark that element's order as 2 and so on
+If you want to position something at the start of the grid, mark the order as -11 and if any other element before that then mark that element's order as -2 and so on
+This also breaks the visual order and the source order
+*/
+
+gridContainer {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid: auto-flow 5em / repeat(4, 5em);
+    justify-content: center; 
+    align-content: center; 
+    grid-auto-flow: dense; /* by default applied on row*/
+}
+header, nav, main, aside {
+    background-color: yellow;
+    border: 1px solid black;
+}
+#specialOne {
+        /* justify-self: start;
+    align-self: end; */
+}
+#OrderMe {
+    /* Visual order does not match the source order, If you see here Aside bexome the first element in the container 
+    but cannot be accessible first via keyboard as its order is not first.
+    Avoid this flow as much as possible*/
+    
+    /* grid-column: 1 / 4;
+    grid-row: 1; */
+
+
+}
+#playDense {
+        /* here We will use dense as we will be making an extra space in the grid 
+        Here aside can use up the cell emptied above but can't its still empty, to use that empty space use 
+        grid-auto-flow: dense row property on the container 
+        This also breaks the visual order and the source order
+        */
+    /* grid-column: span 3; */
+
+
+    /* Order property*/
+    order: -1;
+
+}
