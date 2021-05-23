@@ -96,3 +96,29 @@ Basic theory of grid is over.
 2. Second go through Implicitgridgap.html and implicitgridgap.css
 3. Go for AlignGrid.html & AlignGrid.css
 4. Go for _12Columns.html, _12columns.css
+
+
+***
+Important points to remember:
+1. 
+### If there is extra space in the grid, it will be evenly added to track's base size until its growth limit is hit.
+### For example: minmax(100px, 200px) then 100px will be the base size and 200px will be the growth limit.
+
+### Now suppose there are 3 columns with minmax(100px, 200px) each. If the screen size is 450px then each track size/column size is 150px(evenly distributred)
+
+2. 
+### Fractional unit(fr) stays at min-content until all other track-sizes reaches there growth limit.
+### For example: grid-column-template: minmax(100px, 200px) minmax(100px, 200px) 1fr 
+1 fr will take min-content until growth limit of 200px of both the track sizes reached.
+Only after that it will take up the space.
+
+3. 
+### auto is default track size in css grid
+### auto takes min-content as its base size and max-content as its growth limit.
+### min-max and auto grow parallely and fr will start growing whenever their growth limit are reached.
+Example: grid-column-template: minmax(100px, 200px)  1fr auto
+first minmax's growth limit(200px) and auto's growth limit(max-content) will be hit & fr is min-content till that point of time.
+After that 1fr will take up the remaining available space on the screen
+### if there are no fractional units fr then auto will grow more than its growth limit upto the space availale on the screen
+Example: grid-column-template: minmax(100px, 200px) auto
+now minmax will work as intended but auto will take up the remaining space on the screen

@@ -1,0 +1,92 @@
+/*
+******************************** Here we will be naming grid areas so that they can be used with the elements of the grid *****************************************
+## Property:- "grid-template-areas" is to be used in container 
+
+## Example :  gridContainer {
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    grid-template-columns: 15em 1fr 1fr;
+    grid-template-areas: "header header header"
+                         "nav main aside"
+                         "footer footer footer";
+}
+
+Now, instead of using the whole grid-column/ row thing in the elements of the gtid just write 
+header {
+    grid-area: header
+}
+nav {
+    grid-area: nav
+}
+and so on..
+
+Here we never defined a single grid line.
+We basically transcribed the diagaram we drew into code said which elements belong in which area and CSS does the rest
+
+## Ques: Does this mean everything we learn earlier is of no use?
+   Answer: No, We can not use grid-template-areas thing in clumsy grids. This method is intuitive only for simple layouts.
+
+#### 6 properties of naming grid lines:
+
+     1. No L shaped areas: below example will not work, Stick to area that describe a rectunglar shape.
+            grid-template-areas: ""
+                                 "nav"
+                                 "footer footer footer";
+    
+    2. Each row must have same number of cells: below example will not work.
+            grid-template-areas: "header"
+                                 "nav main"
+                                 "footer footer footer";
+    3. Define empty areas with ellipsis:
+            grid-template-areas: "header ... ..."
+                                 "nav main ..."
+                                 "footer footer footer";
+        This code will work
+    4. Naming grid areas can be displayed in firefox's inspector.
+    
+    5. Named areas implicitly create named lines.
+       Example : gridContainer {
+                                display: grid;
+                                    grid-template-areas: "header header header"
+                                                         "nav main aside"
+                                                         "footer footer footer";
+                            }
+                  div {
+                      grid-row: header-start / footer-start;
+                      grid-column: nav-start / main-end;
+                  }
+        In this example you can see this grid-template-areas automatically creates named grid lines and we can use them as needed.
+        # left, top edges act as start
+        # right, bottom edges act as end
+    
+        6. Named lines implicitly creates named areas this is opposite of 5.
+   */
+
+
+gridContainer {
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    grid-template-columns: 15em 1fr 1fr;
+    grid-template-areas: "header header header"
+                         "nav main aside"
+                         "footer footer footer"; /* This can be written in single line */
+}
+header {
+    grid-area: header;
+}
+nav {
+    grid-area: nav;
+}
+main {
+    grid-area: main;
+}
+aside {
+    grid-area: aside;
+}
+footer {
+    grid-area: footer;
+}
+header, aside, nav, footer, main {
+    background-color: yellow;
+    border: 1px solid black;
+}

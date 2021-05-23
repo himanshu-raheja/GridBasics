@@ -1,0 +1,46 @@
+gridContainer {
+    background: gray;
+    display: grid;
+    grid: "header" 5em
+          "nav" 5em
+          "main" 10em
+          "aside" 5em
+          "footer" 5em / 1fr;
+
+}
+@media screen and (min-width: 600px) {
+
+    gridContainer {
+        width: 100%;
+        grid: "header header" 5em
+          "nav main" 15em
+          "aside aside" 5em
+          "footer footer" 5em / 1fr 2fr;
+}   
+}
+@media screen and (min-width: 800px) {
+
+    gridContainer {
+        width: 100%;
+        grid: "header header header" 5em
+          "nav main aside" 15em
+          "footer footer footer" 5em / 1fr 2fr 1fr;
+}   
+}
+header, footer, nav, main 
+{
+    border: 1px solid rgb(154, 116, 116);
+}
+header {
+
+    grid-area: header
+}
+nav {
+    grid-area: nav
+}
+main {
+    grid-area: main
+}
+footer {
+    grid-area: footer
+}

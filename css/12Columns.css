@@ -20,7 +20,13 @@ nav {
 main {
     grid-area: 2 / 5 / 4 / 13;
 }
+.pies {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(13, 1fr);
+    grid-gap: .5em / 1em;
+}
 
-img {
+.pies  img {
     grid-column: span 3;
 }
